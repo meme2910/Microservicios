@@ -1,0 +1,13 @@
+# Ignorar Maven
+target/
+**/target/
+
+# Archivos temporales y config de IDE
+*.iml
+*.log
+.idea/
+.vscode/
+
+# Git y otros
+.git/
+.DS_Store

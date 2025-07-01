@@ -1,6 +1,6 @@
-# Curso FYG Microservicios
+# Microservicios
 
-Este proyecto contiene el código del curso de microservicios. Incluye dos microservicios independientes, cada uno con su propia documentación y funcionalidades.
+Este proyecto contiene el código del curso de microservicios el cual es para pruebas he impartición de curso. Incluye un par de microservicios independientes, cada uno con su propia documentación y funcionalidades, que pueden tener comunicación entre ellos para los test.
 
 ## Tecnologías utilizadas
 
@@ -19,7 +19,7 @@ Este proyecto contiene el código del curso de microservicios. Incluye dos micro
 
 ## Estructura del proyecto
 ```
-    curso-fyg-microservicios/
+    microservicios/
     ├── ws-nomina/
     │   ├── src/
     │   ├── Dockerfile
@@ -28,6 +28,9 @@ Este proyecto contiene el código del curso de microservicios. Incluye dos micro
     │   ├── src/
     │   ├── Dockerfile
     │   └── pom.xml
+    ├── Dockerfile
+    ├── .dockerignore
+    ├── pom.xml
     └── README.md
 ```
 Cada microservicio es independiente, pero puede comunicarse con el otro si así se configura.
@@ -36,8 +39,8 @@ Cada microservicio es independiente, pero puede comunicarse con el otro si así 
 
 1. Clona el repositorio:
 ``` 
-   git clone https://github.com/meme2910/Curso-FYG-Microservicios.git
-   cd Curso-FYG-Microservicios
+   git clone https://github.com/meme2910/Microservicios.git
+   cd Microservicios
 ```
 2. Entra a la carpeta de un microservicio (por ejemplo):
 ``` 
@@ -52,8 +55,8 @@ Cada microservicio es independiente, pero puede comunicarse con el otro si así 
 
 1. Clona el repositorio:
 ```
-   git clone https://github.com/meme2910/Curso-FYG-Microservicios.git
-   cd Curso-FYG-Microservicios
+   git clone https://github.com/meme2910/Microservicios.git
+   cd Microservicios
 ```
 2. Entra a la carpeta de un microservicio (por ejemplo):
 ```
