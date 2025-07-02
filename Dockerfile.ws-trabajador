@@ -1,0 +1,50 @@
+# -----------------------------------------------------------------------------
+# Dockerfile para el microservicio ws-trabajador
+#
+# Este archivo define los pasos para construir una imagen Docker que ejecuta
+# el microservicio ws-trabajador, desarrollado en Java con Spring Boot.
+#
+# Pasos principales:
+# 1. Usa una imagen base de Maven con OpenJDK 17 para compilar los microservicios.
+# 2. Copia los archivos pom.xml y descarga las dependencias para optimizar la cache.
+# 3. Copia el código fuente de los microservicios.
+# 4. Compila solo el microservicio ws-trabajador.
+# 5. Usa una imagen base ligera de OpenJDK 17 para ejecutar el microservicio.
+# 6. Copia el JAR generado del microservicio al contenedor final.
+# 7. Define el comando de inicio para ejecutar el microservicio.
+#
+# Instrucciones de uso:
+# - Construye la imagen para el microservicio ws-trabajador especificando el Dockerfile:
+#     docker build --no-cache -f Dockerfile.ws-trabajador -t meme2910/ws-trabajador .
+# -----------------------------------------------------------------------------
+
+# Etapa de construcción: compila el microservicio ws-trabajador
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+
+WORKDIR /app
+
+# Copia los archivos pom.xml necesarios
+COPY pom.xml .
+COPY ws-nomina/pom.xml ws-nomina/
+COPY ws-trabajador/pom.xml ws-trabajador/
+
+# Descarga dependencias para aprovechar la cache de Docker
+RUN mvn dependency:go-offline
+
+# Copia el código fuente de los microservicios
+COPY ws-nomina/ ws-nomina/
+COPY ws-trabajador/ ws-trabajador/
+
+# Compila solo el microservicio ws-trabajador
+RUN mvn -pl ws-trabajador -am clean install -DskipTests
+
+# Etapa final: imagen ligera solo con el JAR necesario
+FROM eclipse-temurin:17-jre
+
+WORKDIR /app
+
+# Copia el JAR generado del microservicio ws-trabajador
+COPY --from=build /app/ws-trabajador/target/ws-trabajador*.jar ws-trabajador.jar
+
+# Comando de ejecución del microservicio
+ENTRYPOINT [ "java","-jar","ws-trabajador.jar"]
