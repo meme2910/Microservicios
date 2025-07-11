@@ -29,6 +29,8 @@ WORKDIR /app
 
 # Permite seleccionar el módulo a compilar
 ARG MODULE
+ENV MODULE=${MODULE}
+RUN echo "Compilando módulo: ${MODULE}"
 
 # Copia los archivos pom.xml necesarios
 COPY pom.xml .
