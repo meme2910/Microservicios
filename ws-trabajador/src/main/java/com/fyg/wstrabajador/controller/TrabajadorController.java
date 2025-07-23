@@ -2,6 +2,7 @@ package com.fyg.wstrabajador.controller;
 
 
 import java.util.Optional;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +34,25 @@ public class TrabajadorController {
     public String getHolaMundo() {
         return "Hola Alumnos FYG";
     }
-    
     @RequestMapping(value="/getId/{id}", method=RequestMethod.GET)
     public ResponseEntity<?> requestMethodName(@PathVariable Long id) {
-        LOG.info("PathVariable: " + id);
+        LOG.log(Level.INFO, "PathVariable: {0}", id.toString());
         return ResponseEntity.ok(repository.findById(id));
     }
-
+    @RequestMapping(value="/getNombreById/{id}", method=RequestMethod.GET)
+    public ResponseEntity<?> getNombreById(@PathVariable Long id) {
+        LOG.info("PathVariable: " + id);
+        return ResponseEntity.ok(repository.getNombreById(id));
+    }
+    @RequestMapping(value="/getAll", method=RequestMethod.GET)
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(repository.findAll());
+    }
+    
     @PostMapping(value="/insert")
     public ResponseEntity<?> insert(@RequestBody Trabajador trabajador) {
         try {
+            LOG.info("RequestBody Trabajador: " + trabajador);
             return service.insert(trabajador);
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error al procesar su solicitud: " + e.getMessage());
@@ -51,7 +61,7 @@ public class TrabajadorController {
 
     @RequestMapping(value="/update", method=RequestMethod.PATCH)
     public ResponseEntity<?> updte(@RequestBody Trabajador trabajador) {
-        LOG.info("JSON Recibido: " + trabajador);
+        LOG.info("RequestBody Trabajador: " + trabajador);
         if(trabajador==null || trabajador.getId()==null) return ResponseEntity.badRequest().body("El id es requerido");
         if(repository.existsById(trabajador.getId())){
             repository.save(trabajador);
@@ -61,14 +71,14 @@ public class TrabajadorController {
             return ResponseEntity.badRequest().body("Errror al procesar su solicitud!!");
         }
     }
+    
     @RequestMapping(value="/delete/{id}", method=RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable Long id) {
-        LOG.info("PathVariable: " + id);
+        LOG.info("PathVariable ID: " + id);
         if(repository.existsById(id)){
             Optional<Trabajador> ot = repository.findById(id);
             repository.deleteById(id);
-            LOG.info("TODO OK!!");
-            return ResponseEntity.ok("Ok");
+            return ResponseEntity.ok("Registro Eliminado Exitosamente!!");
         }else{
             LOG.info("HUBO UN PROBLEMA :(");
             return ResponseEntity.badRequest().body("Errror al procesar su solicitud!!");
@@ -76,10 +86,4 @@ public class TrabajadorController {
         
     }
     
-    
-    @RequestMapping(value="/getNombreById/{id}", method=RequestMethod.GET)
-    public ResponseEntity<?> getNombreById(@PathVariable Long id) {
-        LOG.info("PathVariable: " + id);
-        return ResponseEntity.ok(repository.getNombreById(id));
-    }
 }
