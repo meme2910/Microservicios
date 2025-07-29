@@ -1,9 +1,9 @@
-package com.fyg.wstrabajador.repository;
+package com.fyg.trabajador.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.fyg.wstrabajador.entity.Trabajador;
+import com.fyg.trabajador.entity.Trabajador;
 
 
 public interface TrabajadorRepository extends JpaRepository<Trabajador, Long> {

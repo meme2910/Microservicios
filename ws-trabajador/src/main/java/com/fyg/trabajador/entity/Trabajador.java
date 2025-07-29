@@ -1,4 +1,4 @@
-package com.fyg.wstrabajador.entity;
+package com.fyg.trabajador.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

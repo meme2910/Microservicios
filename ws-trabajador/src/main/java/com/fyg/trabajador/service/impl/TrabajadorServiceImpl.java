@@ -1,13 +1,13 @@
-package com.fyg.wstrabajador.service.impl;
+package com.fyg.trabajador.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.fyg.wstrabajador.entity.Trabajador;
-import com.fyg.wstrabajador.repository.TrabajadorRepository;
-import com.fyg.wstrabajador.service.TrabajadorService;
+import com.fyg.trabajador.entity.Trabajador;
+import com.fyg.trabajador.repository.TrabajadorRepository;
+import com.fyg.trabajador.service.TrabajadorService;
 
 @Service("trabajdorService")
 public class TrabajadorServiceImpl implements TrabajadorService {

@@ -1,4 +1,4 @@
-package com.fyg.wstrabajador.model.request;
+package com.fyg.trabajador.model.request;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.fyg.wstrabajador.controller;
+package com.fyg.trabajador.controller;
 
 
 import java.util.Optional;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fyg.wstrabajador.entity.Trabajador;
-import com.fyg.wstrabajador.repository.TrabajadorRepository;
-import com.fyg.wstrabajador.service.TrabajadorService;
+import com.fyg.trabajador.entity.Trabajador;
+import com.fyg.trabajador.repository.TrabajadorRepository;
+import com.fyg.trabajador.service.TrabajadorService;
 
 @RestController
 @RequestMapping("/trabajador")

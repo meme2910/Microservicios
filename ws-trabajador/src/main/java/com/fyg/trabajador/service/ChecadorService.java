@@ -1,8 +1,8 @@
-package com.fyg.wstrabajador.service;
+package com.fyg.trabajador.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.fyg.wstrabajador.model.request.ReporteAsistenciaRequest;
+import com.fyg.trabajador.model.request.ReporteAsistenciaRequest;
 
 public interface  ChecadorService {
     

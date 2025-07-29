@@ -1,11 +1,11 @@
-package com.fyg.wstrabajador.repository;
+package com.fyg.trabajador.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.fyg.wstrabajador.entity.Checador;
+import com.fyg.trabajador.entity.Checador;
 
 public interface ChecadorRepository extends JpaRepository<Checador, Long> {
 

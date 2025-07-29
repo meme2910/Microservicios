@@ -1,4 +1,4 @@
-package com.fyg.wstrabajador.entity;
+package com.fyg.trabajador.entity;
 
 import java.util.Date;
 

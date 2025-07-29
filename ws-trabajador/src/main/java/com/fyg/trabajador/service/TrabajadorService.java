@@ -1,8 +1,8 @@
-package com.fyg.wstrabajador.service;
+package com.fyg.trabajador.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.fyg.wstrabajador.entity.Trabajador;
+import com.fyg.trabajador.entity.Trabajador;
 
 public interface TrabajadorService {
     
