@@ -1,0 +1,30 @@
+# Archivo docker-compose para levantar los microservicios
+# Utiliza variables de entorno definidas en el archivo .env ubicado en la raíz del proyecto.
+
+services:
+  # Servicio para el microservicio de ws-trabajador
+  ws-trabajador:
+    build:
+      context: .                            # Carpeta raíz del proyecto
+      dockerfile: Dockerfile.ws-trabajador  # Dockerfile específico para este microservicio
+    ports:                                  # Mapea el puertos HOST:CONTENEDOR
+      - "${PUERTO_HOST_WS_TRABAJADOR}:8080" 
+    environment:                            # Variable de entorno pasada al contenedor
+      - RUTA_VOLUMEN=${RUTA_VOLUMEN}
+      - POD=${POD}
+
+  # Servicio para el microservicio de ws-nomina
+  ws-nomina:
+    build:
+      context: .                            # Carpeta raíz del proyecto
+      dockerfile: Dockerfile.ws-nomina      # Dockerfile específico para este microservicio
+    ports:                                  # Mapea el puertos HOST:CONTENEDOR
+      - "${PUERTO_HOST_WS_NOMINA}:8080"
+    environment:                            # Variable de entorno pasada al contenedor
+      - RUTA_VOLUMEN=${RUTA_VOLUMEN}
+      - POD=${POD}
+
+# Notas:
+# - Para levantar los servicios, usa el comando: docker compose up
+# - Las variables ${PUERTO_HOST_WS_TRABAJADOR}, ${PUERTO_HOST_WS_NOMINA}, ${RUTA_VOLUMEN} y ${POD} deben estar definidas en el archivo .env en la raíz del proyecto.
+# - Cada servicio se construye usando su propio Dockerfile y expone el puerto
