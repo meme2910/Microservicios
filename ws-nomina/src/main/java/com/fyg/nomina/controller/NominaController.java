@@ -1,5 +1,7 @@
 package com.fyg.nomina.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import com.fyg.nomina.service.NominaService;
 @RestController
 @RequestMapping("/nomina")
 public class NominaController {
+    private static final Logger LOG = LoggerFactory.getLogger(NominaController.class);
 
     @Autowired
     private NominaService nominaService;
@@ -20,6 +23,7 @@ public class NominaController {
     @RequestMapping(value="/reporteAsistencia", method=RequestMethod.POST)
     public ResponseEntity<?> requestMethodName(@RequestBody ReporteAsistenciaRequest request) {
          try {
+            LOG.info("Request: "+ request);
             return nominaService.reporteAsistencia(request);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error al procesar su solicitud: " + e.getMessage());

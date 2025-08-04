@@ -22,6 +22,7 @@ public class ChecadorController {
 
     @RequestMapping(value="/checarAsistencia", method=RequestMethod.POST)
     public ResponseEntity<?> requestMethodName(@RequestBody Long request) {
+        LOG.info("Request: "+ request.toString());
         try {
             return checadorService.checarAsistencia(request);
         } catch (Exception e) {
@@ -32,7 +33,7 @@ public class ChecadorController {
     @RequestMapping(value="/reporteAsistencia", method=RequestMethod.POST)
     public ResponseEntity<?> requestMethodName(@RequestBody ReporteAsistenciaRequest request) {
          try {
-            LOG.info("REQUEST: --->" + request);
+            LOG.info("Request:" + request);
             return checadorService.reporteAsistencia(request);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error al procesar su solicitud: " + e.getMessage());

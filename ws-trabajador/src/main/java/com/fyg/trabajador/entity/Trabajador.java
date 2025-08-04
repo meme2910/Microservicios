@@ -24,5 +24,9 @@ public class Trabajador {
     private String aMaterno;
     @Column(name="puesto")
     private String puesto;
+
+    public String getNombreCompleto(){
+        return this.nombre + " " + this.aPaterno + " " + this.aMaterno;
+    }
     
 }
